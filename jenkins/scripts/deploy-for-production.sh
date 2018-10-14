@@ -14,9 +14,9 @@ echo '"node_modules" directory (i.e. within the appropriate subdirectory of'
 echo '"/var/jenkins_home/workspace/"), which means that this module should not'
 echo 'need to be downloaded after this Pipeline''s initial run for a given'
 echo 'branch.'
-set -x
-npm install serve
-set +x
+#set -x
+#npm install serve
+#set +x
 
 echo 'The following "serve" command runs the npm serve module (downloaded'
 echo 'above) deploys your Node.js/React application (built above in production'
@@ -28,7 +28,8 @@ echo 'is followed by another command that retrieves the process ID (PID) value'
 echo 'of the previously run process (i.e. "serve") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
-./node_modules/serve/bin/serve.js -c 0 -s build &
+#./node_modules/serve/bin/serve.js -c 0 -s build &
+npm start &
 sleep 1
 echo $! > .pidfile
 set +x
